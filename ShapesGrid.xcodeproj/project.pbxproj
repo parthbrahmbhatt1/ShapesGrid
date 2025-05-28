@@ -50,6 +50,7 @@
 		17126AF72DE76A95009D14CD /* ShapeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeModel.swift; sourceTree = "<group>"; };
 		17126AFB2DE76C1B009D14CD /* ShapeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeViewModel.swift; sourceTree = "<group>"; };
 		17126AFE2DE774D3009D14CD /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		17126B002DE77D2D009D14CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +101,7 @@
 		17126ACB2DE76A36009D14CD /* ShapesGrid */ = {
 			isa = PBXGroup;
 			children = (
+				17126B002DE77D2D009D14CD /* Info.plist */,
 				17126AF62DE76A87009D14CD /* Model */,
 				17126AFD2DE774AF009D14CD /* Shapes */,
 				17126AFA2DE76BD1009D14CD /* View */,
@@ -463,6 +465,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ShapesGrid/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShapesGrid/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -491,6 +494,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ShapesGrid/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShapesGrid/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

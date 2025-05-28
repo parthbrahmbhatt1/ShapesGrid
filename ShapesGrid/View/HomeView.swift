@@ -22,6 +22,20 @@ struct HomeView: View {
                 }
                 .padding()
                 
+                // Dynamic Buttons based on draw_path
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(viewModel.buttons) { button in
+                            Button(button.name) {
+                                viewModel.addButton(button.draw_path)
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                }
+                .task {
+                    await viewModel.getButtons()
+                }
             }
         }
     }

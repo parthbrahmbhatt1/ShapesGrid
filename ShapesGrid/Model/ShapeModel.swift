@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct ShapeModel: Identifiable, Codable {
-    var id = UUID()
+struct ShapeModel: Decodable {
+    let buttons: [ShapeButton]
+}
+
+struct ShapeButton: Decodable, Identifiable {
+    var id: String { name + draw_path}
     let name: String
     let draw_path: String
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class ShapeViewModel: ObservableObject {
-    @Published var buttons: [ShapeModel] = []
+    @Published var buttons: [ShapeButton] = []
     @Published var shapes: [String] = []
     
     func getButtons() async {
@@ -18,9 +18,20 @@ class ShapeViewModel: ObservableObject {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            buttons = try JSONDecoder().decode([ShapeModel].self, from: data)
+            let decoded = try JSONDecoder().decode(ShapeModel.self, from: data)
+            DispatchQueue.main.async {
+                self.buttons = decoded.buttons
+            }
         } catch {
             print("Error:", error)
         }
+    }
+    
+    func addButton(_ shape: String) {
+        shapes.append(shape)
+    }
+    
+    func clear() {
+        shapes.removeAll()
     }
 }
