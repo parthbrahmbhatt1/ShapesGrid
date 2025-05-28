@@ -8,14 +8,36 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var viewModel = ShapeViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                // Grid View
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 20))]) {
+                    ForEach(viewModel.shapes, id: \.self) {
+                        shapeView(for: $0)
+                            .frame(width: 60, height: 60)
+                    }
+                }
+                .padding()
+                
+            }
         }
-        .padding()
+    }
+    
+    @ViewBuilder
+    func shapeView(for shapeType: String) -> some View {
+        switch shapeType {
+        case "circle":
+            Circle()
+        case "Sqaure":
+            Rectangle()
+        case "Triangle":
+            Triangle()
+        default:
+            EmptyView()
+        }
     }
 }
 
