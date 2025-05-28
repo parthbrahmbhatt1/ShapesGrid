@@ -9,27 +9,49 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = ShapeViewModel()
+    @State private var shapes: [String] = []
+    private let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
     
     var body: some View {
         NavigationStack {
             VStack {
                 // Grid View
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 20))]) {
-                    ForEach(viewModel.shapes, id: \.self) {
-                        shapeView(for: $0)
-                            .frame(width: 60, height: 60)
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(shapes.indices, id: \.self) { index in
+                            shapeView(for: shapes[index])
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.cyan)
+                        }
+                    }
+                    .padding()
+                }
+                
+                Spacer()
+                
+                // Dynamic Buttons from API
+                HStack {
+                    ForEach(viewModel.buttons) { button in
+                        Button(button.name) {
+                            shapes.append(button.draw_path)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.blue)
                     }
                 }
-                .padding()
+                .padding(.bottom, 10)
                 
-                // Dynamic Buttons based on draw_path
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(viewModel.buttons) { button in
-                            Button(button.name) {
-                                viewModel.addButton(button.draw_path)
-                            }
-                            .buttonStyle(.bordered)
+                // Static Buttons
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Clear All") {
+                            shapes.removeAll()
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink("Edit Circles") {
+                            EditCirclesView()
                         }
                     }
                 }
@@ -45,9 +67,9 @@ struct HomeView: View {
         switch shapeType {
         case "circle":
             Circle()
-        case "Sqaure":
+        case "square":
             Rectangle()
-        case "Triangle":
+        case "triangle":
             Triangle()
         default:
             EmptyView()

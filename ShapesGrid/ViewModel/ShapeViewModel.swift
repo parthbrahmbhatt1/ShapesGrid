@@ -9,7 +9,6 @@ import Foundation
 
 class ShapeViewModel: ObservableObject {
     @Published var buttons: [ShapeButton] = []
-    @Published var shapes: [String] = []
     
     func getButtons() async {
         guard let url = URL(string: "http://staticcontent.cricut.com/static/test/shapes_001.json") else {
@@ -25,13 +24,5 @@ class ShapeViewModel: ObservableObject {
         } catch {
             print("Error:", error)
         }
-    }
-    
-    func addButton(_ shape: String) {
-        shapes.append(shape)
-    }
-    
-    func clear() {
-        shapes.removeAll()
     }
 }
