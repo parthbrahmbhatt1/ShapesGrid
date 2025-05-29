@@ -10,7 +10,13 @@ import Foundation
 class ShapeViewModel: ObservableObject {
     @Published var buttons: [ShapeButton] = []
     @Published var shapes: [String] = []
+    private let session: URLSessionProtocol
     
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
+    @MainActor
     func getButtons() async {
         guard let url = URL(string: "http://staticcontent.cricut.com/static/test/shapes_001.json") else {
             return
@@ -19,9 +25,7 @@ class ShapeViewModel: ObservableObject {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedData = try JSONDecoder().decode(ShapeModel.self, from: data)
-            DispatchQueue.main.async {
-                self.buttons = decodedData.buttons
-            }
+            self.buttons = decodedData.buttons
         } catch {
             print("Error:", error)
         }

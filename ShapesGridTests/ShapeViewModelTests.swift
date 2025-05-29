@@ -10,10 +10,12 @@ import XCTest
 
 final class ShapeViewModelTests: XCTestCase {
     var viewModel: ShapeViewModel!
+    var mockSession: MockURLSession!
     
     override func setUp() {
         super.setUp()
-        viewModel = ShapeViewModel()
+        mockSession = MockURLSession()
+        viewModel = ShapeViewModel(session: mockSession)
     }
     
     override func tearDown() {
@@ -21,7 +23,7 @@ final class ShapeViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetButtons() throws {
+    func testGetButtons() async {
         let json = """
                 {
                     "buttons": [
@@ -31,11 +33,15 @@ final class ShapeViewModelTests: XCTestCase {
                     ]
                 }
                 """.data(using: .utf8)!
-        let decodedData = try JSONDecoder().decode(ShapeModel.self, from: json)
-        XCTAssertEqual(decodedData.buttons.count, 3)
-        XCTAssertEqual(decodedData.buttons[0].name, "Circle")
-        XCTAssertEqual(decodedData.buttons[1].name, "Square")
-        XCTAssertEqual(decodedData.buttons[2].name, "Triangle")
+        mockSession.testData = json
+        await viewModel.getButtons()
+        XCTAssertEqual(viewModel.buttons.count, 3)
+        XCTAssertEqual(viewModel.buttons[0].name, "Circle")
+        XCTAssertEqual(viewModel.buttons[0].draw_path, "circle")
+        XCTAssertEqual(viewModel.buttons[1].name, "Square")
+        XCTAssertEqual(viewModel.buttons[1].draw_path, "square")
+        XCTAssertEqual(viewModel.buttons[2].name, "Triangle")
+        XCTAssertEqual(viewModel.buttons[2].draw_path, "triangle")
     }
     
     func testClearAll() {
