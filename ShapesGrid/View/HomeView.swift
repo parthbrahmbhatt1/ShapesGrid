@@ -9,17 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = ShapeViewModel()
-    @State private var shapes: [String] = []
     private let columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
     
     var body: some View {
         NavigationStack {
             VStack {
+                
                 // Grid View
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(shapes.indices, id: \.self) { index in
-                            shapeView(for: shapes[index])
+                        ForEach(viewModel.shapes.indices, id: \.self) { index in
+                            ShapeViewBuilder.shapeView(for: viewModel.shapes[index])
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(.cyan)
                         }
@@ -33,7 +33,7 @@ struct HomeView: View {
                 HStack {
                     ForEach(viewModel.buttons) { button in
                         Button(button.name) {
-                            shapes.append(button.draw_path)
+                            viewModel.shapes.append(button.draw_path)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -41,38 +41,24 @@ struct HomeView: View {
                     }
                 }
                 .padding(.bottom, 10)
-                
-                // Static Buttons
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Clear All") {
-                            shapes.removeAll()
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink("Edit Circles") {
-                            EditCirclesView()
-                        }
+            }
+            
+            // Static Buttons
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Clear All") {
+                        viewModel.clearAll()
                     }
                 }
-                .task {
-                    await viewModel.getButtons()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink("Edit Circles") {
+                        EditCirclesView()
+                    }
                 }
             }
-        }
-    }
-    
-    @ViewBuilder
-    func shapeView(for shapeType: String) -> some View {
-        switch shapeType {
-        case "circle":
-            Circle()
-        case "square":
-            Rectangle()
-        case "triangle":
-            Triangle()
-        default:
-            EmptyView()
+            .task {
+                await viewModel.getButtons()
+            }
         }
     }
 }

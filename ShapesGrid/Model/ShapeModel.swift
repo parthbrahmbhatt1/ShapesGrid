@@ -12,7 +12,7 @@ struct ShapeModel: Decodable {
 }
 
 struct ShapeButton: Decodable, Identifiable {
-    var id: String { name + draw_path}
+    var id: String { name + draw_path }
     let name: String
     let draw_path: String
 }

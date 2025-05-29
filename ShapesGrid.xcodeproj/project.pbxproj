@@ -18,6 +18,8 @@
 		17126AFC2DE76C1B009D14CD /* ShapeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126AFB2DE76C1B009D14CD /* ShapeViewModel.swift */; };
 		17126AFF2DE774D3009D14CD /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126AFE2DE774D3009D14CD /* Triangle.swift */; };
 		17126B022DE7857A009D14CD /* EditCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B012DE7857A009D14CD /* EditCirclesView.swift */; };
+		17126B042DE7CDB7009D14CD /* ShapeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B032DE7CDB7009D14CD /* ShapeViewModelTests.swift */; };
+		17126B092DE7EFC5009D14CD /* ShapeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B082DE7EFC5009D14CD /* ShapeViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		17126AFE2DE774D3009D14CD /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		17126B002DE77D2D009D14CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		17126B012DE7857A009D14CD /* EditCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCirclesView.swift; sourceTree = "<group>"; };
+		17126B032DE7CDB7009D14CD /* ShapeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeViewModelTests.swift; sourceTree = "<group>"; };
+		17126B082DE7EFC5009D14CD /* ShapeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				17126ADD2DE76A37009D14CD /* ShapesGridTests.swift */,
+				17126B032DE7CDB7009D14CD /* ShapeViewModelTests.swift */,
 			);
 			path = ShapesGridTests;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 			children = (
 				17126ACE2DE76A36009D14CD /* HomeView.swift */,
 				17126B012DE7857A009D14CD /* EditCirclesView.swift */,
+				17126B082DE7EFC5009D14CD /* ShapeViewBuilder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				17126ACF2DE76A36009D14CD /* HomeView.swift in Sources */,
 				17126AFF2DE774D3009D14CD /* Triangle.swift in Sources */,
 				17126AF82DE76A95009D14CD /* ShapeModel.swift in Sources */,
+				17126B092DE7EFC5009D14CD /* ShapeViewBuilder.swift in Sources */,
 				17126ACD2DE76A36009D14CD /* ShapesGridApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17126B042DE7CDB7009D14CD /* ShapeViewModelTests.swift in Sources */,
 				17126ADE2DE76A37009D14CD /* ShapesGridTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
