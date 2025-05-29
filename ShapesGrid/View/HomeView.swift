@@ -56,9 +56,9 @@ struct HomeView: View {
                     }
                 }
             }
-            .task {
-                await viewModel.getButtons()
-            }
+        }
+        .task {
+            await viewModel.getButtons()
         }
     }
 }
