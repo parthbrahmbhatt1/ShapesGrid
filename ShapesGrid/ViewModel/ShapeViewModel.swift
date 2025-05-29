@@ -11,14 +11,14 @@ class ShapeViewModel: ObservableObject {
     @Published var buttons: [ShapeButton] = []
     @Published var shapes: [String] = []
     private let session: URLSessionProtocol
-    
+
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
     @MainActor
     func getButtons() async {
-        guard let url = URL(string: "http://staticcontent.cricut.com/static/test/shapes_001.json") else {
+        guard let url = APIEndpoints.url else {
             return
         }
         

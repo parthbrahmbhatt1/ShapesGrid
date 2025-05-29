@@ -22,6 +22,7 @@
 		17126B092DE7EFC5009D14CD /* ShapeViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B082DE7EFC5009D14CD /* ShapeViewBuilder.swift */; };
 		17126B0C2DE7F3E2009D14CD /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B0B2DE7F3E2009D14CD /* URLSessionProtocol.swift */; };
 		17126B0E2DE7F4AD009D14CD /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B0D2DE7F4AD009D14CD /* MockURLSession.swift */; };
+		17126B102DE89DE4009D14CD /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17126B0F2DE89DE4009D14CD /* APIEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		17126B082DE7EFC5009D14CD /* ShapeViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeViewBuilder.swift; sourceTree = "<group>"; };
 		17126B0B2DE7F3E2009D14CD /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		17126B0D2DE7F4AD009D14CD /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		17126B0F2DE89DE4009D14CD /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			children = (
 				17126B0B2DE7F3E2009D14CD /* URLSessionProtocol.swift */,
 				17126B0D2DE7F4AD009D14CD /* MockURLSession.swift */,
+				17126B0F2DE89DE4009D14CD /* APIEndpoints.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				17126ACF2DE76A36009D14CD /* HomeView.swift in Sources */,
 				17126AFF2DE774D3009D14CD /* Triangle.swift in Sources */,
 				17126B0C2DE7F3E2009D14CD /* URLSessionProtocol.swift in Sources */,
+				17126B102DE89DE4009D14CD /* APIEndpoints.swift in Sources */,
 				17126AF82DE76A95009D14CD /* ShapeModel.swift in Sources */,
 				17126B0E2DE7F4AD009D14CD /* MockURLSession.swift in Sources */,
 				17126B092DE7EFC5009D14CD /* ShapeViewBuilder.swift in Sources */,
