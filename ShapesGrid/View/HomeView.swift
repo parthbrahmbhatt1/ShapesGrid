@@ -52,7 +52,7 @@ struct HomeView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink("Edit Circles") {
-                        EditCirclesView()
+                        EditCirclesView(viewModel: viewModel)
                     }
                 }
             }
