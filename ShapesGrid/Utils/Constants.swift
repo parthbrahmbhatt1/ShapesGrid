@@ -24,6 +24,10 @@ struct Constnats {
         static let color = UIColor.cyan
     }
     
+    struct Error {
+        static let error = "Error:"
+    }
+    
     struct Navigation {
         static let editCircles = "Edit Circles"
     }
@@ -32,5 +36,8 @@ struct Constnats {
         static let circle = "circle"
         static let square = "square"
         static let triangle = "triangle"
+        static let Circle = "Circle"
+        static let Square = "Square"
+        static let Triangle = "Triangle"
     }
 }

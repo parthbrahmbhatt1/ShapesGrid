@@ -27,7 +27,7 @@ class ShapeViewModel: ObservableObject {
             let decodedData = try JSONDecoder().decode(ShapeModel.self, from: data)
             self.buttons = decodedData.buttons
         } catch {
-            print("Error:", error)
+            print(Constnats.Error.error, error)
         }
     }
     

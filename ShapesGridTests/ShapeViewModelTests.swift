@@ -20,6 +20,7 @@ final class ShapeViewModelTests: XCTestCase {
     
     override func tearDown() {
         viewModel = nil
+        mockSession = nil
         super.tearDown()
     }
     
@@ -36,18 +37,35 @@ final class ShapeViewModelTests: XCTestCase {
         mockSession.testData = json
         await viewModel.getButtons()
         XCTAssertEqual(viewModel.buttons.count, 3)
-        XCTAssertEqual(viewModel.buttons[0].name, "Circle")
-        XCTAssertEqual(viewModel.buttons[0].draw_path, "circle")
-        XCTAssertEqual(viewModel.buttons[1].name, "Square")
-        XCTAssertEqual(viewModel.buttons[1].draw_path, "square")
-        XCTAssertEqual(viewModel.buttons[2].name, "Triangle")
-        XCTAssertEqual(viewModel.buttons[2].draw_path, "triangle")
+        XCTAssertEqual(viewModel.buttons[0].name, Constnats.Shapes.Circle)
+        XCTAssertEqual(viewModel.buttons[0].draw_path, Constnats.Shapes.circle)
+        XCTAssertEqual(viewModel.buttons[1].name, Constnats.Shapes.Square)
+        XCTAssertEqual(viewModel.buttons[1].draw_path, Constnats.Shapes.square)
+        XCTAssertEqual(viewModel.buttons[2].name, Constnats.Shapes.Triangle)
+        XCTAssertEqual(viewModel.buttons[2].draw_path, Constnats.Shapes.triangle)
     }
     
     func testClearAll() {
-        viewModel.shapes = ["circle", "square", "triangle"]
+        viewModel.shapes = [Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle]
         XCTAssertFalse(viewModel.shapes.isEmpty)
         viewModel.clearAll()
         XCTAssertTrue(viewModel.shapes.isEmpty)
+    }
+    
+    func testClearCircles() {
+        viewModel.shapes = [Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle, Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle]
+        viewModel.clearCircles()
+        XCTAssertEqual(viewModel.shapes, [Constnats.Shapes.square, Constnats.Shapes.triangle, Constnats.Shapes.square, Constnats.Shapes.triangle])
+    }
+    
+    func testAddCircle() {
+        viewModel.AddCircle()
+        XCTAssertEqual(viewModel.shapes.last, Constnats.Shapes.circle)
+    }
+    
+    func testRemoveCircle() {
+        viewModel.shapes = [Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle, Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle]
+        viewModel.RemoveCircle()
+        XCTAssertEqual(viewModel.shapes, [Constnats.Shapes.circle, Constnats.Shapes.square, Constnats.Shapes.triangle, Constnats.Shapes.square, Constnats.Shapes.triangle])
     }
 }
