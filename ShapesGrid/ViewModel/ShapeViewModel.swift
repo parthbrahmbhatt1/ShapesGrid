@@ -18,7 +18,7 @@ class ShapeViewModel: ObservableObject {
     
     @MainActor
     func getButtons() async {
-        guard let url = APIEndpoints.url else {
+        guard let url = URL(string: Constnats.APIEndpoints.url) else {
             return
         }
         
@@ -33,5 +33,19 @@ class ShapeViewModel: ObservableObject {
     
     func clearAll() {
         shapes.removeAll()
+    }
+    
+    func clearCircles() {
+        shapes.removeAll { $0 == Constnats.Shapes.circle}
+    }
+    
+    func AddCircle() {
+        shapes.append(Constnats.Shapes.circle)
+    }
+    
+    func RemoveCircle() {
+        if let lastIndex = shapes.lastIndex(of: Constnats.Shapes.circle) {
+            shapes.remove(at: lastIndex)
+        }
     }
 }

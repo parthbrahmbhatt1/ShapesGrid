@@ -13,16 +13,38 @@ struct EditCirclesView: View {
     
     var body: some View  {
         let circles = viewModel.shapes.filter {
-            $0 == "circle"
+            $0 == Constnats.Shapes.circle
         }
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(circles.indices, id: \.self) { index in
-                    ShapeViewBuilder.shapeView(for: viewModel.shapes[index])
+                ForEach(circles.indices, id: \.self) {_ in
+                    Circle()
                         .frame(width: 80, height: 80)
                         .foregroundColor(.cyan)
                 }
             }
+            .padding()
         }
+        
+        Spacer()
+        
+        HStack {
+            Button(Constnats.Buttons.deleteAll) {
+                viewModel.clearCircles()
+            }
+            .frame(maxWidth: .infinity)
+            
+            Button(Constnats.Buttons.add) {
+                viewModel.AddCircle()
+            }
+            .frame(maxWidth: .infinity)
+            
+            Button(Constnats.Buttons.remove) {
+                viewModel.RemoveCircle()
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

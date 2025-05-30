@@ -46,12 +46,12 @@ struct HomeView: View {
             // Static Buttons
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Clear All") {
+                    Button(Constnats.Buttons.clearAll) {
                         viewModel.clearAll()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink("Edit Circles") {
+                    NavigationLink(Constnats.Navigation.editCircles) {
                         EditCirclesView(viewModel: viewModel)
                     }
                 }
