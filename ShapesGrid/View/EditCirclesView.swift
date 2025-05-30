@@ -17,8 +17,8 @@ struct EditCirclesView: View {
         }
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(circles.indices, id: \.self) {_ in
-                    Circle()
+                ForEach(circles.indices, id: \.self) { index in
+                    ShapeViewBuilder.shapeView(for: Constnats.Shapes.circle)
                         .frame(width: 80, height: 80)
                         .foregroundColor(.cyan)
                 }
